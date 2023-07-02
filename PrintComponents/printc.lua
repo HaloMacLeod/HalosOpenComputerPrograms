@@ -1,4 +1,5 @@
 local version = "1"
-for k, v in pairs(component.list) do
+local table = component.list
+for k, v in pairs() do
   print(tostring(k)..": "..tostring(v))
 end
