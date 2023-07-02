@@ -1,0 +1,12 @@
+{
+   ["PrintComponents"] = {
+      files = {
+         ["master/PrintComponents/printc.lua"] = "/bin",
+      },
+      name="Print Components",
+      description="Prints out connected components.",
+      authors="Halo",
+      note="",
+      repo="tree/master/PrintComponents",
+   },
+}
