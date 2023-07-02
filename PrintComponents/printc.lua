@@ -7,7 +7,7 @@ if #arg ~= 1 or next(opt) then
    os.exit(1)
 end
 
-if arg == "all" then
+if string.lower(arg[1]) == "all" then
     for k, v in pairs(component.list()) do
         print(tostring(k)..": "..tostring(v))
     end
