@@ -1,7 +1,6 @@
 local shell = require "shell"
 
 local arg,opt = shell.parse(...)
-print(arg[1])
 if #arg ~= 1 or next(opt) then
    print("Use: print component list or specific types.")
    os.exit(1)
