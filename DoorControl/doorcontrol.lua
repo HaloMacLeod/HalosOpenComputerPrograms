@@ -9,7 +9,7 @@ accessScreen: UUID of second screen for printing messages
 
 local settings = {
     whitelist = "/doorwhitelist",
-    blacklist = "/doorblacklist"
+    blacklist = "/doorblacklist",
     doorTime = 5,
     maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
     secgpuaddr = "cb6d9713-0569-437a-91a9-415abbcbad8f",
@@ -17,8 +17,6 @@ local settings = {
     secgpu = component.get(secgpuaddr),
     mainScreen = "735f9afb-653f-48ed-bad6-d2dcd8ab4e17"
     secScreen = "305099b1-c556-491b-b6e6-fec508f75d58",   
-
-
 }
 
 -- These control the resolution and location of the ACCESS GRANTED message on the second screen.
