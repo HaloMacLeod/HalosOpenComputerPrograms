@@ -98,7 +98,7 @@ end
 if settings.whitelist then
   print("Loading whitelist...")
   local whitelist = settings.whitelist
-  isAllowed = function(player) return whitelist[getUUID(player)] end
+  isAllowed = function(player) return settings.whitelist[getUUID(player)] end
 else
   fatal("No whitelist or blacklist specified!")
 end
