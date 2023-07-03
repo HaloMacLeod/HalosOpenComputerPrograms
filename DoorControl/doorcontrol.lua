@@ -110,8 +110,8 @@ while true do
     local player = args[6]
     local allowed = false
     for k, v in pairs(settings.whitelist) do
-      print(v.. " =v")
-      print(k.. " =k")
+      print(v)
+      print(k)
         if string.lower(v) == string.lower(player) then
             allowed = true
         end
