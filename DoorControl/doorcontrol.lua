@@ -26,8 +26,8 @@ local ser = require "serialization"
 local redstone = component.redstone
 
 local settings = {
-    whitelist = "/doorwhitelist",
-    blacklist = "/doorblacklist",
+    whitelist = {},
+    blacklist = {}
     doorTime = 5,
     maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
     secgpuaddr = "cb6d9713-0569-437a-91a9-415abbcbad8f",
@@ -59,12 +59,9 @@ end
 
 local cinvoke = component.invoke
 
-local function loadTableFile(filename)
-  local f, err = loadfile(filename)
-  if not f then fatal(filename .. " : " .. err) end
-  local list = f()
-  if type(list) ~= "table" then fatal(filename .. " did not return a table") end
-  return list
+local function loadWhitelist()
+  if type(settings.whitelist) ~= "table" then fatal(settings.whitelist .. " did not return a table") end
+  return settings.whitelist
 end
 
 -- Get the UUID of a player, or nil if unavailable
@@ -100,11 +97,11 @@ end
 -- If loading one doesn't work, exit with an error.
 if settings.whitelist then
   print("Loading whitelist...")
-  local whitelist = loadTableFile(settings.whitelist)
+  local whitelist = settings.whitelist
   isAllowed = function(player) return whitelist[getUUID(player)] end
 elseif settings.blacklist then
   print("Loading blacklist...")
-  local blacklist = loadTableFile(settings.blacklist)
+  local blacklist = settings.blacklist
   -- In case getUUID returns nil, always fail
   blacklist[1] = true
   isAllowed = function(player) return not blacklist[getUUID(player) or 1] end
