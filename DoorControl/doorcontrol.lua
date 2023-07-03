@@ -19,6 +19,7 @@ local accessResolution = { 16, 12 }
 local event = require "event"
 local kb = require "keyboard"
 local os = require "os"
+local sides = require "sides"
 local component = require "component"
 local internet = require "internet"
 local ser = require "serialization"
@@ -58,8 +59,7 @@ local cinvoke = component.invoke
 -- Get the UUID of a player, or nil if unavailable
 
 local function redstoneOff()
-    local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/easy/output", "w")
-    red:write("0")
+  redstone.setOutput(sides.east, 0)
     displayAccess(ACCESS_CLEAR)
 end
 
@@ -114,8 +114,7 @@ while true do
     end
     print(allowed)
     if allowed == true then
-      local file = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
-      file:write("1")
+      redstone.setOutput(sides.east, 15)
       -- Cancel the current redstoneOff timer
       if timerID then event.cancel(timerID) end
       timerID = event.timer(settings.doorTime, timerCallback)
