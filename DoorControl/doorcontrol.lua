@@ -101,6 +101,7 @@ local functuon isAllowed(player)
     for k, v in pairs(settings.whitelist) do
         if string.lower(v) == string.lower(player) then
             return true
+        end
     end
 end
 
