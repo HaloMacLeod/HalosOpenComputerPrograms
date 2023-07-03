@@ -97,10 +97,11 @@ end
 -- If loading one doesn't work, exit with an error.
 if settings.whitelist then
   print("Loading whitelist...")
-local function isAllowed(player)
-    for k, v in pairs(settings.whitelist) do
-        if string.lower(v) == string.lower(player) then
-            return true
+    local function isAllowed(player)
+        for k, v in pairs(settings.whitelist) do
+            if string.lower(v) == string.lower(player) then
+                return true
+            end
         end
     end
 end
