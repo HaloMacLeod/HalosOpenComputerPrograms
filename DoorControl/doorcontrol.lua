@@ -26,7 +26,7 @@ local ser = require "serialization"
 local redstone = component.redstone
 
 local settings = {
-    whitelist = {HaloMacLeod},
+    HaloMacLeod = true,
     --blacklist = {},
     doorTime = 5,
     maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
@@ -109,12 +109,8 @@ while true do
     -- Handle motion detection 
     local player = args[6]
     local allowed = false
-    for k, v in pairs(settings.whitelist) do
-      print(v)
-      print(k)
-        if string.lower(v) == string.lower(player) then
-            allowed = true
-        end
+    if settings[player] == true then
+      allowed = true
     end
     print(allowed)
     if allowed == true then
