@@ -7,17 +7,6 @@ whitelist: filename of people to let in
 accessScreen: UUID of second screen for printing messages
 ]]
 
-local settings = {
-    whitelist = "/doorwhitelist",
-    blacklist = "/doorblacklist",
-    doorTime = 5,
-    maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
-    secgpuaddr = "cb6d9713-0569-437a-91a9-415abbcbad8f",
-    maingpu = component.get(maingpuaddr),
-    secgpu = component.get(secgpuaddr),
-    mainScreen = "735f9afb-653f-48ed-bad6-d2dcd8ab4e17",
-    secScreen = "305099b1-c556-491b-b6e6-fec508f75d58",   
-}
 
 -- These control the resolution and location of the ACCESS GRANTED message on the second screen.
 -- You probably don't need to change this so it's not part of settings, but you can change it.
@@ -35,6 +24,18 @@ local internet = require "internet"
 local ser = require "serialization"
 -- Now get access to the redstone component
 local redstone = component.redstone
+
+local settings = {
+    whitelist = "/doorwhitelist",
+    blacklist = "/doorblacklist",
+    doorTime = 5,
+    maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
+    secgpuaddr = "cb6d9713-0569-437a-91a9-415abbcbad8f",
+    maingpu = component.get(maingpuaddr),
+    secgpu = component.get(secgpuaddr),
+    mainScreen = "735f9afb-653f-48ed-bad6-d2dcd8ab4e17",
+    secScreen = "305099b1-c556-491b-b6e6-fec508f75d58",   
+}
 
 -- Pattern used to get the UUID from returned string
 local UUID_PATTERN = [["id":"(%w+)"]]
