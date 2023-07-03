@@ -114,8 +114,8 @@ while true do
     end
     print(allowed)
     if allowed == true then
-      local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
-      red:write("1")
+      local file = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
+      file:write("1")
       -- Cancel the current redstoneOff timer
       if timerID then event.cancel(timerID) end
       timerID = event.timer(settings.doorTime, timerCallback)
