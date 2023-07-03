@@ -31,8 +31,8 @@ local settings = {
     doorTime = 5,
     maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
     secgpuaddr = "cb6d9713-0569-437a-91a9-415abbcbad8f",
-    maingpu = component.get(maingpuaddr),
-    secgpu = component.get(secgpuaddr),
+    maingpu = component.get(settings.maingpuaddr),
+    secgpu = component.get(settings.secgpuaddr),
     mainScreen = "735f9afb-653f-48ed-bad6-d2dcd8ab4e17",
     secScreen = "305099b1-c556-491b-b6e6-fec508f75d58",   
 }
