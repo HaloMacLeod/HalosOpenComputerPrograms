@@ -72,18 +72,6 @@ end
 
 -- First we determine if we're using a whitelist or blacklist
 -- If loading one doesn't work, exit with an error.
-function isAllowed(player)
-  local enabled = false
-  for k, v in pairs(settings.whitelist) do
-      if string.lower(v) == string.lower(player) then
-        print(v.. " =v")
-        print(k.. " =k")
-          enabled = true
-      end
-  end
-  return enabled
-end
-
 
 -- Now setup the secondary screen
 if settings.secScreen and settings.mainScreen then
@@ -120,7 +108,15 @@ while true do
   elseif args[1] == "motion" then
     -- Handle motion detection 
     local player = args[6]
-    local allowed = isAllowed(player)
+    local allowed = false
+    for k, v in pairs(settings.whitelist) do
+      print(v.. " =v")
+      print(k.. " =k")
+        if string.lower(v) == string.lower(player) then
+            allowed = true
+        end
+    end
+    return enabled
     print(allowed)
     if allowed == true then
       local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
