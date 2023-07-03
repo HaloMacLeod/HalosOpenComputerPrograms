@@ -122,6 +122,7 @@ while true do
     -- Handle motion detection 
     local player = args[6]
     local allowed = isAllowed(player)
+    print(allowed)
     if allowed == true then
       local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
       red:write("1")
