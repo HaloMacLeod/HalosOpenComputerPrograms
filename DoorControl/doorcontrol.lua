@@ -76,6 +76,8 @@ function isAllowed(player)
   local enabled = false
   for k, v in pairs(settings.whitelist) do
       if string.lower(v) == string.lower(player) then
+        print(v.. " =v")
+        print(k.. " =k")
           enabled = true
       end
   end
