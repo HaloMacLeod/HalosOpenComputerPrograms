@@ -76,7 +76,7 @@ if settings.whitelist then
   print("Loading whitelist...")
     function isAllowed(player)
         for k, v in pairs(settings.whitelist) do
-          local enabled == false
+          local enabled = false
             if string.lower(v) == string.lower(player) then
                 enabled = true
             end
