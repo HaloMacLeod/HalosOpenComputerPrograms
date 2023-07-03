@@ -72,17 +72,14 @@ end
 
 -- First we determine if we're using a whitelist or blacklist
 -- If loading one doesn't work, exit with an error.
-if settings.whitelist then
-  print("Loading whitelist...")
-    function isAllowed(player)
-        for k, v in pairs(settings.whitelist) do
-          local enabled = false
-            if string.lower(v) == string.lower(player) then
-                enabled = true
-            end
-            return enabled
-        end
-    end
+function isAllowed(player)
+  for k, v in pairs(settings.whitelist) do
+    local enabled = false
+      if string.lower(v) == string.lower(player) then
+          enabled = true
+      end
+      return enabled
+  end
 end
 
 
