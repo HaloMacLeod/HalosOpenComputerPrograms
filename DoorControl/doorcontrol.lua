@@ -59,26 +59,7 @@ end
 
 local cinvoke = component.invoke
 
-local function loadWhitelist()
-  if type(settings.whitelist) ~= "table" then fatal(settings.whitelist .. " did not return a table") end
-  return settings.whitelist
-end
-
 -- Get the UUID of a player, or nil if unavailable
-local function getUUID(player)
-  local uuid = playerToUUID[player]
-  if not uuid then
-    local url = "https://api.mojang.com/users/profiles/minecraft/" .. player
-    local data = ""
-    for chunk in internet.request(url) do data = data .. chunk end
-    uuid = string.match(data, UUID_PATTERN)
-    if uuid then
-      playerToUUID[player] = uuid
-      print("Cached " .. uuid .. " as " .. player)
-    end
-  end
-  return uuid
-end
 
 local function redstoneOff()
     local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/easy/output", "w")
@@ -106,17 +87,6 @@ if settings.whitelist then
     end
 end
 
--- Load the playerToUUID map
-do
-  print("Loading cached data...")
-  local fd,err = io.open("uuidmap.dat", "rb")
-  if not fd then
-    playerToUUID = {}
-  else
-    playerToUUID = ser.unserialize(fd:read("*a")) or {}
-    fd:close()
-  end
-end
 
 -- Now setup the secondary screen
 if settings.secScreen and settings.mainScreen then
