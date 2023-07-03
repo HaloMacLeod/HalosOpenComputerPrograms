@@ -46,10 +46,6 @@ local playerToUUID = nil
 -- Current timer ID
 local timerID = nil
 
--- This function will determine if the player is allowed in
-local isAllowed = nil
--- This function will write to the secondary screen
-local displayAccess = nil
 
 -- Log an error to stderr and force-exit
 local function fatal(...)
@@ -80,9 +76,11 @@ if settings.whitelist then
   print("Loading whitelist...")
     function isAllowed(player)
         for k, v in pairs(settings.whitelist) do
+          local enabled == false
             if string.lower(v) == string.lower(player) then
-                return true
+                enabled = true
             end
+            return enabled
         end
     end
 end
@@ -123,8 +121,9 @@ while true do
   elseif args[1] == "motion" then
     -- Handle motion detection 
     local player = args[6]
-    if isAllowed(player) then
-      local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/easy/output", "w")
+    local allowed = isAllowed(player)
+    if allowed == true then
+      local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
       red:write("1")
       -- Cancel the current redstoneOff timer
       if timerID then event.cancel(timerID) end
@@ -132,7 +131,7 @@ while true do
       displayAccessMain(ACCESS_GRANTED)
       displayAccessSec(ACCESS_GRANTED)
       print("Granted: " .. player)
-    else
+    elseif allowed == false then
       displayAccessMain(ACCESS_DENIED)
       displayAccessSec(ACCESS_DENIED)
       print("Denied:  " .. player)
