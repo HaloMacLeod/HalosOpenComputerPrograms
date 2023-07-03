@@ -116,7 +116,6 @@ while true do
             allowed = true
         end
     end
-    return enabled
     print(allowed)
     if allowed == true then
       local red, err = io.open("/red/b8505b59-79f3-461a-9547-9d57495f480d/east/output", "w")
