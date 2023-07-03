@@ -26,7 +26,7 @@ local ser = require "serialization"
 local redstone = component.redstone
 
 local settings = {
-    whitelist = {},
+    whitelist = {HaloMacLeod},
     blacklist = {},
     doorTime = 5,
     maingpuaddr = "3627db68-bb13-4df9-ba22-dca33b75c1a8",
