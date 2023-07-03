@@ -73,13 +73,13 @@ end
 -- First we determine if we're using a whitelist or blacklist
 -- If loading one doesn't work, exit with an error.
 function isAllowed(player)
+  local enabled = false
   for k, v in pairs(settings.whitelist) do
-    local enabled = false
       if string.lower(v) == string.lower(player) then
           enabled = true
       end
-      return enabled
   end
+  return enabled
 end
 
 
