@@ -99,12 +99,6 @@ if settings.whitelist then
   print("Loading whitelist...")
   local whitelist = settings.whitelist
   isAllowed = function(player) return whitelist[getUUID(player)] end
-elseif settings.blacklist then
-  print("Loading blacklist...")
-  local blacklist = settings.blacklist
-  -- In case getUUID returns nil, always fail
-  blacklist[1] = true
-  isAllowed = function(player) return not blacklist[getUUID(player) or 1] end
 else
   fatal("No whitelist or blacklist specified!")
 end
@@ -130,9 +124,6 @@ if settings.secScreen and settings.mainScreen then
 
   cinvoke(settings.maingpuaddr, "bind", settings.mainScreen, true)
   cinvoke(settings.secgpuaddr, "bind", settings.secScreen, true)
-
-  cinvoke(settings.maingpuaddr, "setResolution", table.unpack(accessResolution))
-  cinvoke(settings.secgpuaddr, "setResolution", table.unpack(accessResolution))
 
   displayAccessMain = function(msg)
     cinvoke(settings.maingpuaddr, "set", accessX, accessY, msg)
