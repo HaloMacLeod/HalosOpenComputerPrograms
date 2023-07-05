@@ -1,4 +1,11 @@
 local shell = require "shell"
+local event = require "event"
+local kb = require "keyboard"
+local os = require "os"
+local sides = require "sides"
+local component = require "component"
+local internet = require "internet"
+local ser = require "serialization"
 
 local arg,opt = shell.parse(...)
 if #arg ~= 1 or next(opt) then
