@@ -8,7 +8,7 @@ local internet = require "internet"
 local ser = require "serialization"
 
 local smeltIron = component.proxy("9882b341-aa1d-40c7-8971-147d0ad60c66")
-local Drain = component.proxy("d7ad0645-174d-4344-8fde-e37ab3088548")
+local Drain = component.proxy("d7ad0645-174b-4344-8fde-e37ab3088548")
 
 local arg,opt = shell.parse(...)
 if #arg == 0 or next(opt) then
