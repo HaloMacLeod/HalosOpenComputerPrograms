@@ -19,7 +19,7 @@ if string.lower(arg[1]) == "all" then
     for k, v in pairs(component.list()) do
         print(tostring(k)..": "..tostring(v))
         if arg[2] ~= nil and string.lower(arg[2]) == "save" then
-            table.insert(Comps, "comp: "..k.." = "..v)
+            table.insert(Comps, k.." = "..v)
         end
     end
 else
