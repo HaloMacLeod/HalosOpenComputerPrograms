@@ -27,7 +27,7 @@ else
         if string.match(string.lower(v), string.lower(arg[1])) then
             print(tostring(k)..": "..tostring(v))
             if arg[2] ~= nil and string.lower(arg[2]) == "save" then
-                table.insert(Comps, "comp: "..k.." = "..v)
+                table.insert(Comps, k.." = "..v)
             end
         end
     end
@@ -35,6 +35,9 @@ end
 
 if #Comps > 0 then
     file=io.open("/comps","w")
-    file:write(ser.serialize(Comps))
+    for i, comp in ipairs(Comps) do
+        file:write(comp.."\n")
+    end
     file:close()
 end
+
